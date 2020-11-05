@@ -8,7 +8,7 @@ import { DemandeService } from '../demande.service';
   styleUrls: ['./send-demande.component.css']
 })
 export class SendDemandeComponent implements OnInit {
-string: a;
+
   problemes:Problem[];
   demande:Demande=new Demande();
   constructor(private demandeService:DemandeService) { }
