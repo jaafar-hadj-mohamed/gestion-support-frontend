@@ -12,16 +12,15 @@
         [(ngModel)]="demande.prenom" name="prenom">
 </div>
 <div class="form-group">
-    <label>Email</label>
+    <label>email</label>
     <input type="text" class="form-control" id ="email"
-        [(ngModel)]="demande.email" name="email">
+        [(ngModel)]="demande.email" [(ngModel)]="email.email" name="email" name="email">
 </div>
 <div class="form-group">
     <label>description</label>
     <input type="text" class="form-control" id ="description"
-        [(ngModel)]="demande.description" name="description">
+        [(ngModel)]="demande.description" [(ngModel)]="email.mensaje"name="description">
 </div>
-
 <div class="form-group">
     <select  [(ngModel)]="demande.problem" class="btn btn-secondary dropdown-toggle"  name="problem">
       <option value="default">Select Secteur</option>
@@ -29,7 +28,16 @@
   </select>
 </div>
 
-<button class="btn btn-success" type="submit">submit</button>
+
+
+
+
+
+
+
+
+
+<button  class="btn btn-success" type="submit">submit</button>
 </form>
 
   

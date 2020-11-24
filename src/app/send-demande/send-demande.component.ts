@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Demande } from '../demande';
 import { Problem } from '../problem';
 import { DemandeService } from '../demande.service';
+import { Email } from '../email';
 @Component({
   selector: 'app-send-demande',
   templateUrl: './send-demande.component.html',
@@ -9,12 +10,14 @@ import { DemandeService } from '../demande.service';
 })
 export class SendDemandeComponent implements OnInit {
 
-  problemes:Problem[];
+  problemes:Problem[];  
   demande:Demande=new Demande();
-  constructor(private demandeService:DemandeService) { }
+  email: Email=new Email();
+  constructor(private demandeService:DemandeService,private emailService:DemandeService) { }
 
   ngOnInit(): void {
     this.getProblemes();
+    
   }
   saveDemande(){
     this.demandeService.sendDemande(this.demande).subscribe( data =>{
@@ -23,9 +26,17 @@ export class SendDemandeComponent implements OnInit {
     },
     error => console.log(error));
   }
+  saveEmail(){
+    this.demandeService.createEmail(this.email).subscribe( data =>{
+      console.log(data);
+      
+    },
+    error => console.log(error));
+  }
   onSubmit(){
     console.log(this.demande);
     this.saveDemande();
+    this.saveEmail();
   }
 
   private getProblemes(){
@@ -33,5 +44,7 @@ export class SendDemandeComponent implements OnInit {
       this.problemes=data;
     });
   }
+
+  
 
 }
