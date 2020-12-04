@@ -1,15 +1,22 @@
-<p>send-demande works!</p>
-<h3>envoyer une demande</h3>
+
+
+
+
+<button class="btn btn-primary" (click)="myFunction()">Button</button>
+
+<div class="container">
+    
+<h3>envoyer votre demande </h3>
 <form (ngSubmit)="onSubmit()">
 <div class="form-group">
     <label>nom</label>
     <input type="text" class="form-control" id ="nom"
-        [(ngModel)]="demande.nom" name="nom">
+        [(ngModel)]="demande.nom" [(ngModel)]="email.nom"name="nom">
 </div>
 <div class="form-group">
     <label>prenom</label>
     <input type="text" class="form-control" id ="prenom"
-        [(ngModel)]="demande.prenom" name="prenom">
+        [(ngModel)]="demande.prenom" [(ngModel)]="email.prenom" name="prenom">
 </div>
 <div class="form-group">
     <label>email</label>
@@ -23,7 +30,7 @@
 </div>
 <div class="form-group">
     <select  [(ngModel)]="demande.problem" class="btn btn-secondary dropdown-toggle"  name="problem">
-      <option value="default">Select Secteur</option>
+      <option value="default">type de problème</option>
      <option  *ngFor="let problem of problemes" [Value]="problem" >{{problem.nom}}</option>
   </select>
 </div>
@@ -39,5 +46,6 @@
 
 <button  class="btn btn-success" type="submit">submit</button>
 </form>
-
+</div>
+<iframe id="chatbot" width="350" height="430"  allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/e558bc35-551f-4604-89a1-1705020f383d"></iframe>
   

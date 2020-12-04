@@ -25,6 +25,14 @@ export class DemandeService {
 
   }
 
+  getDemandesList():Observable<Demande[]>{
+    return this.httpClient.get<Demande[]>(`${this.baseURL}`);
+
+  }
+  getDemaneById(id:number):Observable<Demande>{
+    return this.httpClient.get<Demande>(`${this.baseURL}/${id}`);
+  }
+
   createEmail(email: Email):Observable<object>{
     return this.httpClient.post(`${this.baseURL3}`, email);
 

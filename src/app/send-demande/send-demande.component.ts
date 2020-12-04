@@ -3,6 +3,7 @@ import { Demande } from '../demande';
 import { Problem } from '../problem';
 import { DemandeService } from '../demande.service';
 import { Email } from '../email';
+import{Router}from '@angular/router';
 @Component({
   selector: 'app-send-demande',
   templateUrl: './send-demande.component.html',
@@ -13,7 +14,8 @@ export class SendDemandeComponent implements OnInit {
   problemes:Problem[];  
   demande:Demande=new Demande();
   email: Email=new Email();
-  constructor(private demandeService:DemandeService,private emailService:DemandeService) { }
+  constructor(private demandeService:DemandeService,private emailService:DemandeService
+    ,private router:Router) { }
 
   ngOnInit(): void {
     this.getProblemes();
@@ -45,6 +47,9 @@ export class SendDemandeComponent implements OnInit {
     });
   }
 
-  
+  myFunction(){
+    //this.router.navigateByUrl('/interface-agent/(contentOutlet:inbox)');
+    this.router.navigateByUrl('/interface-agent/inbox)');
+}
 
 }
