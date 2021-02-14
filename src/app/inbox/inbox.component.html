@@ -47,17 +47,17 @@
                                       <div class="result-header">
                                           <div class="row">
                                               <div class="col-lg-6">
-                                                  <div class="records">Showing: <b>1-20</b> of <b>200</b> result</div>
+                                                 <!-- <div class="records">Showing: <b>1-20</b> of <b>200</b> result</div>-->
                                               </div>
                                               <div class="col-lg-6">
                                                   <div class="result-actions">
                                                       <div class="result-sorting">
-                                                          <span>Sort By:</span>
+                                                          <!--<span>Sort By:</span>
                                                           <select class="form-control border-0" id="exampleOption">
                                                               <option value="1">Relevance</option>
                                                               <option value="2">Names (A-Z)</option>
                                                               <option value="3">Names (Z-A)</option>
-                                                          </select>
+                                                          </select>-->
                                                       </div>
                                                       <div class="result-views">
                                                           <button type="button" class="btn btn-soft-base btn-icon">
@@ -117,7 +117,7 @@
                                                     <th>problème</th>
                                                     <th>Priorité</th>
                                                     <th>Assigné a</th>                                                    
-                                                    <th>Status</th>
+                                                    <th>Etat</th>
                                                     <th>Date</th>
                                                     
                                                   </tr>
@@ -142,16 +142,34 @@
                                                              <ng-template #thenBlock >{{demande.problem}}</ng-template>
                                                                 <ng-template #elseBlock>Probleme non spécifier.</ng-template>
                                                             </div>!-->
-
-                                                            <div *ngIf="demande.problem; else elseBlock" class="widget-26-job-category bg-soft-base">                                                              
+                                                            <ng-container *ngIf="demande.problem==='hard'; else seconde ">
+                                                            <div class="widget-26-job-category bg-soft-base">                                                              
+                                                                
                                                                 <i class="indicator bg-warning"></i>
                                                                 <span>{{demande.problem}}</span>                                                                 
-                                                            </div>
-                                                            <ng-template #elseBlock>
+                                                            </div></ng-container>
+                                                            <ng-template #seconde>
+                                                                <ng-container *ngIf="demande.problem==='soft'; else third ">
+                                                                <div class="widget-26-job-category bg-soft-base"> 
+                                                                <i class="indicator bg-danger"></i>
+                                                                <span>{{demande.problem}}</span>
+                                                                </div></ng-container>
+                                                            </ng-template>
+                                                            <ng-template #third>
+                                                                <ng-container *ngIf="demande.problem==='office'; else fourth ">
+                                                                <div class="widget-26-job-category bg-soft-base"> 
+                                                                <i class="indicator bg-success"></i>
+                                                                <span>{{demande.problem}}</span>
+                                                                </div></ng-container>
+                                                            </ng-template>
+                                                            <ng-template #fourth>
                                                             <div style="background: #ffe089;" class="widget-26-job-category bg-soft-base">                                                              
                                                                 <span >Problème non spécifier.</span>                                                                 
                                                             </div>
                                                             </ng-template>
+
+
+                                                            
 
 
                                                         </td>

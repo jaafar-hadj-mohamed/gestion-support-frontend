@@ -11,6 +11,7 @@ import { DemandeService } from '../demande.service';
 export class InboxComponent implements OnInit {
 
   demandes:Demande[];
+  
   constructor(private demandeService:DemandeService , private router:Router) { }
 
   ngOnInit(): void {this.getDemandes();

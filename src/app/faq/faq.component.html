@@ -1,0 +1,47 @@
+ <!--faq test-->
+ <!--
+ <p>faq works!</p>
+ <div class="container">
+     <div class="row">
+         <div class="col-md-12">
+             <div class="section-title text-center wow zoomIn">
+                 <h1>Frequently Asked Questions</h1>
+                 <span></span>
+                 <p>Our Frequently Asked Questions here.</p>
+             </div>
+         </div>
+     </div>
+     <div class="row">				
+         <div class="col-md-12">
+             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true" >
+                <div class="panel panel-default"   *ngFor="let reponse of reponses; let i=index" >
+                     <div class="panel-heading" role="tab" id="headingTwo" >
+                         <h4 class="panel-title">
+                             <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="{{'#collapseTwo'+i}}" aria-expanded="false" aria-controls="collapseTwo">
+                                 Why Titanic best? {{demande.nom}}
+                             </a>
+                         </h4>
+                     </div>
+                     <div id="{{'collapseTwo'+i}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                         <div class="panel-body">
+                             <p   [innerHtml]="reponse.text"  > </p>
+                         </div>
+                     </div>
+                 </div>
+                     
+                 
+                     
+                     
+                     
+                     <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                         <div class="panel-body">
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent nisl lorem, dictum id pellentesque at, vestibulum ut arcu. Curabitur erat libero, egestas eu tincidunt ac, rutrum ac justo. Vivamus condimentum laoreet lectus, blandit posuere tortor aliquam vitae. Curabitur molestie eros. </p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </div>
+     </div>	
+ </div>
+-->
+           <!--end faq test-->

@@ -11,20 +11,25 @@ import{Router}from '@angular/router';
 })
 export class SendDemandeComponent implements OnInit {
 
+ 
   problemes:Problem[];  
   demande:Demande=new Demande();
   email: Email=new Email();
   constructor(private demandeService:DemandeService,private emailService:DemandeService
-    ,private router:Router) { }
+    ,private router:Router) { 
+      
+    }
 
   ngOnInit(): void {
     this.getProblemes();
     
+    
   }
   saveDemande(){
     this.demandeService.sendDemande(this.demande).subscribe( data =>{
-      console.log(data);
+       console.log(data);
       //this.goToEmployeeList();
+      
     },
     error => console.log(error));
   }

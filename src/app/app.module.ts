@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SendDemandeComponent } from './send-demande/send-demande.component';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InterfaceAgentComponent } from './interface-agent/interface-agent.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { ContentComponent } from './content/content.component';
@@ -13,10 +13,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { InboxComponent } from './inbox/inbox.component';
 import { EmailDetailComponent } from './email-detail/email-detail.component';
 
+import { EditorModule } from '@tinymce/tinymce-angular';
+
 
 //for french date
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { FaqComponent } from './faq/faq.component';
 registerLocaleData(localeFr, 'fr');
 //for french date
 @NgModule({
@@ -28,13 +31,16 @@ registerLocaleData(localeFr, 'fr');
     ContentComponent,
     NavbarComponent,
     InboxComponent,
-    EmailDetailComponent
+    EmailDetailComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    EditorModule
   ],
   providers: [/*for french date*/{provide: LOCALE_ID, useValue: 'fr' }/*for french date*/],
   bootstrap: [AppComponent]
