@@ -111,8 +111,8 @@
          
           
           <div class="container">
-          <form  [formGroup]="addPostForm" (ngSubmit)="addPost()">
-            <editor initialValue="{{demande.nom}}" [formControlName]="'body'" [init]="{plugins: 'link'}"></editor>
+          <form  [formGroup]="addPostForm" (ngSubmit)="addPost()" (ngSubmit)="onSubmit()">
+            <editor initialValue="{{demande.nom}}" [formControlName]="'body'" [init]="{plugins: 'link'}" ></editor>
           <button  class="btn btn-success" type="submit">submit</button>
 
         </form></div>
@@ -121,3 +121,38 @@
 
       </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container"  style="width:450px;" >
+      <form (ngSubmit)="onSubmit()">
+        
+        <div class="form-group">
+            <label>email</label>
+            <input type="text" class="form-control" id ="email"
+                 [(ngModel)]="email.email" name="email" name="email">
+        </div>
+        <div class="form-group">
+            <label>description</label>
+            <input type="text" class="form-control" id ="description"
+                  [(ngModel)]="email.mensaje"name="description">
+        </div>
+        
+        
+        
+        
+        <button  class="btn btn-success" type="submit">submit</button>
+        </form>
+    </div>

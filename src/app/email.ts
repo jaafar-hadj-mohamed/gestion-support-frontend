@@ -1,6 +1,6 @@
 export class Email {
-    id:number;
-    nombre:number;
+    id:string;
+    nombre:string;
     email:string;
     nom:string;
     prenom:string;

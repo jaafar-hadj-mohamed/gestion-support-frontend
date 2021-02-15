@@ -6,6 +6,7 @@ import { Reponse } from './reponse';
 import { Email } from './email';
 import { PostPayload } from './email-detail/post-payload';
 import { Problem } from './problem';
+import { Emailload } from './faq/emailload';
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +45,10 @@ export class DemandeService {
 
   createEmail(email: Email):Observable<object>{
     return this.httpClient.post(`${this.baseURL3}`, email);
+
+  }
+  createEmail1(emailload: Emailload):Observable<object>{
+    return this.httpClient.post(`${this.baseURL3}`, emailload);
 
   }
 

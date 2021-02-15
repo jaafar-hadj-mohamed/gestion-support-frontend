@@ -1,6 +1,7 @@
+<p>faq works!</p>
  <!--faq test-->
  <!--
- <p>faq works!</p>
+ 
  <div class="container">
      <div class="row">
          <div class="col-md-12">
@@ -45,3 +46,76 @@
  </div>
 -->
            <!--end faq test-->
+
+
+
+
+
+    
+           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <div class="container"  style="width:450px;" >
+    
+            <h3>envoyer votre demande </h3>
+            <form  (ngSubmit)="onSubmit()">
+            
+            
+            <div class="form-group">
+                <label>email</label>
+                <input type="text" class="form-control" id ="email"
+                     [(ngModel)]="email.email" name="email" name="email">
+            </div>
+            <div class="form-group">
+                <label>description</label>
+                <input type="text" class="form-control" id ="description"
+                      [(ngModel)]="email.mensaje"name="description">
+            </div>
+            
+            
+            
+            <button  class="btn btn-success" type="submit">submit</button>
+            </form>
+            
+            </div>
+
+
+
+            
+
+            
+
+
+
+
+
+
+
+{{ee}}
+{{emailload.mensaje}}<span  [innerHtml]="emailload.mensaje"></span>
+
+
+           <div class="container">
+            <form  [formGroup]="addPostForm"  (ngSubmit)="onSubmit()">convert_urls : false
+                
+              <editor  [formControlName]="'body'" [init]="{plugins: 'link'}" ></editor>
+              
+              <button  class="btn btn-success" type="submit" >submit</button>
+          </form></div>
+          
+
+          

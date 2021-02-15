@@ -8,6 +8,7 @@ import { title } from 'process';
 import { from } from 'rxjs';
 import { Demande } from '../demande';
 import { Reponse } from '../reponse';
+import { Email } from '../email';
 
 import { DemandeService } from '../demande.service';
 
@@ -25,7 +26,8 @@ export class EmailDetailComponent implements OnInit {
 
 //test  
 postId:number;
-
+email: Email=new Email();
+//email:string;
 demandes:Demande[];
 demande:Demande;
 reponses:Reponse[];
@@ -37,7 +39,7 @@ postPayload: PostPayload;
 //test
  
   id:number;
-  
+  tt:String;
 
 
   addPostForm: FormGroup;
@@ -50,6 +52,7 @@ postPayload: PostPayload;
     private route:ActivatedRoute, addpostService:DemandeService) {
      //test
       this.postId = this.route.snapshot.params.id;
+      
       //test
       this.addPostForm = new FormGroup({
         
@@ -59,10 +62,13 @@ postPayload: PostPayload;
         id: '',
         //description: '',
         text: '',
+        
         demande_id:this.postId,
         
       }
-      console.log(this.postPayload);
+      //console.log(this.postPayload);
+     
+      console.log(this.postId);
      }
 
   ngOnInit(): void {
@@ -82,9 +88,13 @@ this.id=this.route.snapshot.params['id'];
 
   this.demande=new Demande();
     this.id=this.route.snapshot.params['id'];
+    //this.email=this.route.snapshot.params['email'];
      this.demandeService.getDemaneById(this.id).subscribe(data=>{
       this.demande=data; 
       //console.log(this.demande)
+      //this.email=this.demande.email;
+      //console.log(this.demande.email);
+      //console.log(this.email);
      },error=>console.log(error));
 
      
@@ -115,6 +125,21 @@ this.id=this.route.snapshot.params['id'];
   }
   
 
+
+  saveEmail(){
+    this.demandeService.createEmail(this.email).subscribe( data =>{
+      console.log(data);
+      
+    },
+    error => console.log(error));
+  }
+  onSubmit(){
+      this.saveEmail();
+  }
+
+
+
+
   /*addPost(){
     this.postPayload.description = this.addPostForm.get('body').value;
     
@@ -127,7 +152,6 @@ this.id=this.route.snapshot.params['id'];
   //test postcomment
   addPost(){
     this.postPayload.text = this.addPostForm.get('body').value;
-    
     this.demandeService.addPost(this.postPayload,this.id).subscribe(data => {
       
     }, error => {
