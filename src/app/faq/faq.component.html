@@ -1,4 +1,4 @@
-<p>faq works!</p>
+
  <!--faq test-->
  <!--
  
@@ -49,73 +49,61 @@
 
 
 
-
-
-    
-           
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-          <div class="container"  style="width:450px;" >
-    
-            <h3>envoyer votre demande </h3>
-            <form  (ngSubmit)="onSubmit()">
-            
-            
-            <div class="form-group">
-                <label>email</label>
-                <input type="text" class="form-control" id ="email"
-                     [(ngModel)]="email.email" name="email" name="email">
-            </div>
-            <div class="form-group">
-                <label>description</label>
-                <input type="text" class="form-control" id ="description"
-                      [(ngModel)]="email.mensaje"name="description">
-            </div>
-            
-            
-            
-            <button  class="btn btn-success" type="submit">submit</button>
-            </form>
-            
-            </div>
-
-
-
-            
-
-            
-
-
-
-
-
-
-
-{{ee}}
-{{emailload.mensaje}}<span  [innerHtml]="emailload.mensaje"></span>
-
-
            <div class="container">
-            <form  [formGroup]="addPostForm"  (ngSubmit)="onSubmit()">convert_urls : false
-                
-              <editor  [formControlName]="'body'" [init]="{plugins: 'link'}" ></editor>
-              
-              <button  class="btn btn-success" type="submit" >submit</button>
-          </form></div>
-          
+			<div class="row">
+				<div class="col-md-12">
+					<div class="section-title text-center wow zoomIn">
+						<h1>foire aux questions</h1>
+						<span></span>
+						<!--<p>Our Frequently Asked Questions here.</p>-->
+					</div>
+				</div>
+			</div>
+			<div class="row">				
+				<div class="col-md-12">
+					<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+						
+						<div class="panel panel-default" *ngFor="let faq of faqs; let i=index">
+							<div class="panel-heading" role="tab" id="headingTwo">
+								<h4 class="panel-title">
+									<a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="{{'#collapseTwo'+i}}" aria-expanded="false" aria-controls="collapseTwo">
+										 {{faq.question}}
+									</a>
+								</h4>
+							</div>
+							<div id="{{'collapseTwo'+i}}" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+								<div class="panel-body">
+									<p>{{faq.reponse}} </p>
+								</div>
+							</div>
+						</div>
+						
+						
+						
+					</div>
+				</div><!--- END COL -->		
+			</div><!--- END ROW -->			
+		</div> 
+
+    
+ 
+
+
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
 
           

@@ -4,6 +4,9 @@ import { Observable, Observer,from } from 'rxjs';
 import { Demande } from './demande';
 import { Reponse } from './reponse';
 import { Email } from './email';
+import { Etat } from './etat';
+import { Faq } from './faq';
+import { Macro } from './macro';
 import { PostPayload } from './email-detail/post-payload';
 import { Problem } from './problem';
 import { Emailload } from './faq/emailload';
@@ -20,15 +23,20 @@ export class DemandeService {
   private baseURL4 ="reponses";
   private baseURL5 ="http://localhost:3000/api/v1/demandes";
   private baseURL6 ="http://localhost:3000/api/v1/demandes/4";
-  private baseURL7 ="http://localhost:3000/api/v1/demandes/4/reponses";
+  private baseURL7 ="http://localhost:3000/api/v1/demandes/1/reponses";
   private baseURL8 ="http://localhost:3000/api/v1/problemes/3";
   private baseURL9 ="http://localhost:3000/api/v1/reponses";
+  private baseURL10 ="http://localhost:3000/api/v1/etats";
+  private baseURL11 ="http://localhost:3000/api/v1/faqs";
+  private baseURL12 ="http://localhost:3000/api/v1/macros";
+
   constructor(private httpClient:HttpClient) { }
 
   
   getProblemesList(): Observable<Problem[]>{
     return this.httpClient.get<Problem[]>(`${this.baseURL1}`);
   }
+  
 
   sendDemande(demande: Demande):Observable<object>{
     return this.httpClient.post(`${this.baseURL}`, demande);
@@ -51,7 +59,25 @@ export class DemandeService {
     return this.httpClient.post(`${this.baseURL3}`, emailload);
 
   }
+  getFaqsList():Observable<Faq[]>{
+    return this.httpClient.get<Faq[]>(`${this.baseURL11}`);
+  }
+  getMacrosList():Observable<Macro[]>{
+    return this.httpClient.get<Macro[]>(`${this.baseURL12}`);
+  }
+  postMacro(macro: Macro):Observable<object>{
+    return this.httpClient.post(`${this.baseURL12}`, macro);
 
+  }
+  getMacroById(id:number):Observable<Macro>{
+    return this.httpClient.get<Macro>(`${this.baseURL12}/${id}`);
+  }
+  updateMacro(id:number,macro:Macro):Observable<Object>{
+    return this.httpClient.put(`${this.baseURL12}/${id}`,macro);
+  }
+  deleteMacro(id:number):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL12}/${id}`);
+  }
   /*addPost(postPayload: PostPayload){
     return this.httpClient.post(`${this.baseURL}`, postPayload);
 
@@ -66,6 +92,15 @@ export class DemandeService {
     return this.httpClient.post(`${this.baseURL5}/${id}/${this.baseURL4}`, postPayload);
 
   }
+  sendReponse(reponse1: Reponse,id:number):Observable<object>{
+    return this.httpClient.post(`${this.baseURL5}/${id}/${this.baseURL4}`, reponse1);
+
+  }
+  sendReponsemacro(reponse2: Reponse):Observable<object>{
+    return this.httpClient.post(`${this.baseURL7}`, reponse2);
+
+  }
+  
 
 
 
@@ -87,6 +122,12 @@ export class DemandeService {
   getReponsesList(id:number):Observable<Reponse[]>{
     
     return this.httpClient.get<Reponse[]>(`${this.baseURL5}/${id}/${this.baseURL4}`);
+
+  }
+  
+  getReponsesList1(id:number):Observable<Reponse>{
+    
+    return this.httpClient.get<Reponse>(`${this.baseURL9}/${id}`);
 
   }
 

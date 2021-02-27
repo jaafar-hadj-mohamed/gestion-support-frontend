@@ -6,6 +6,8 @@ export class Demande {
     email:string;
     description:string;
     problem:string;
+    etat:string;
+    priorite:string;
     
     
 }

@@ -9,8 +9,10 @@ import{Router}from '@angular/router';
   templateUrl: './send-demande.component.html',
   styleUrls: ['./send-demande.component.css']
 })
-export class SendDemandeComponent implements OnInit {
 
+
+export class SendDemandeComponent implements OnInit {
+  
  
   problemes:Problem[];  
   demande:Demande=new Demande();
@@ -20,8 +22,10 @@ export class SendDemandeComponent implements OnInit {
       
     }
 
+    
   ngOnInit(): void {
     this.getProblemes();
+    
     
     
   }
@@ -45,6 +49,7 @@ export class SendDemandeComponent implements OnInit {
     this.saveDemande();
     this.saveEmail();
   }
+  
 
   private getProblemes(){
     this.demandeService.getProblemesList().subscribe(data=>{
@@ -57,4 +62,8 @@ export class SendDemandeComponent implements OnInit {
     this.router.navigateByUrl('/interface-agent/inbox)');
 }
 
+
+
+
 }
+ 

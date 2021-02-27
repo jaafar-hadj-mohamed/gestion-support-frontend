@@ -2,26 +2,28 @@
 import { Component, OnInit } from '@angular/core';
 
 
-import{Emailload}from './emailload';
-import { FormControl, FormGroup } from '@angular/forms';
+//import{Emailload}from './emailload';
+//import { FormControl, FormGroup } from '@angular/forms';
 import { DemandeService } from '../demande.service';
-import { Email } from '../email';
+//import { Email } from '../email';
 import{Router}from '@angular/router';
+import { Faq } from '../faq';
 @Component({
   selector: 'app-faq',
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.css']
 })
 export class FaqComponent implements OnInit {
-  email: Email=new Email();
+ /* email: Email=new Email();
   ee:string;
   addPostForm: FormGroup;
    addPostForm1: FormGroup;
   emailload:Emailload;
-  body = new FormControl('');
+  body = new FormControl('');*/
+  faqs:Faq[];
 
   constructor(private demandeService:DemandeService,private router:Router) { 
-this.ee="hadjmohamedjaafar@gmail.com";
+/*this.ee="hadjmohamedjaafar@gmail.com";
     this.addPostForm = new FormGroup({
         
       body: this.body
@@ -35,12 +37,13 @@ this.ee="hadjmohamedjaafar@gmail.com";
       
     }
     //console.log(this.postPayload);
-    console.log(this.ee);
+    console.log(this.ee);*/
     
    
   }
 
   ngOnInit(): void {
+    this.getFaqs();
 //---------------------------------------------------------faq----------
    /* $('#sidebarCollapse').on('click', function () {
       $('#sidebar').toggleClass('active');
@@ -65,9 +68,13 @@ this.ee="hadjmohamedjaafar@gmail.com";
 
   }
 
+  private getFaqs(){
+    this.demandeService.getFaqsList().subscribe(data=>{
+      this.faqs=data;
+    });
+  }
 
-
-
+/*
   saveEmail(){
     //this.emailload.mensaje=this.addPostForm.get('body').value;
     this.emailload.email=this.ee;
@@ -85,7 +92,7 @@ this.ee="hadjmohamedjaafar@gmail.com";
     //console.log(this.demande);
     
     this.saveEmail();
-  }
+  }*/
 
  
 }

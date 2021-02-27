@@ -8,12 +8,15 @@ import { title } from 'process';
 import { from } from 'rxjs';
 import { Demande } from '../demande';
 import { Reponse } from '../reponse';
+import { Macro } from '../macro';
 import { Email } from '../email';
+import{Emailload}from './emailload';
 
 import { DemandeService } from '../demande.service';
 
 import{PostPayload} from './post-payload';
 import { Problem } from '../problem';
+import { toTypeScript } from '@angular/compiler';
 
 
 
@@ -23,15 +26,25 @@ import { Problem } from '../problem';
   styleUrls: ['./email-detail.component.css']
 })
 export class EmailDetailComponent implements OnInit {
+  
+  
 
-//test  
+
+//test 
+user:String; 
+emailload:Emailload;
 postId:number;
+
 email: Email=new Email();
 //email:string;
 demandes:Demande[];
 demande:Demande;
 reponses:Reponse[];
 reponse:Reponse;
+macros:Macro[];
+//macro:Macro;
+macro:Macro=new Macro();
+
 problem:Problem;
 problems:Problem[];
 postPayloads: PostPayload[];
@@ -40,23 +53,41 @@ postPayload: PostPayload;
  
   id:number;
   tt:String;
-
+  ttt:String;
+selectedvalue:String="aaa";
+sel:number=2;
 
   addPostForm: FormGroup;
   
 
-  
+  reponse1:Reponse=new Reponse();
   body = new FormControl('');
+  
+
+
+  ddlselect()
+  {var d=document.getElementById("ddselect")as HTMLSelectElement;
+  var displaytext=d.options[d.selectedIndex].text ;
+  this.tt=displaytext;
+  (<HTMLInputElement>document.getElementById("txtvalue")).value=displaytext;
+  console.log(this.tt);
+  this.tt=this.tt;
+  }
+  
+  
+  
 
   constructor(private demandeService:DemandeService,
     private route:ActivatedRoute, addpostService:DemandeService) {
-     //test
+      this.selectedvalue = "app";
+      //test
       this.postId = this.route.snapshot.params.id;
       
       //test
       this.addPostForm = new FormGroup({
         
         body: this.body
+
       });
       this.postPayload = {
         id: '',
@@ -69,10 +100,27 @@ postPayload: PostPayload;
       //console.log(this.postPayload);
      
       console.log(this.postId);
+
+      this.emailload = {
+        id: '',
+        //description: '',
+        email: '',
+        
+        mensaje:'',
+        
+      }
+      //console.log(this.postPayload);
+      //console.log(this.ee);
      }
 
-  ngOnInit(): void {
+//-----------------
 
+
+//-----------------
+    
+  ngOnInit(): void {
+    this.getMacros();
+    
 //this.demande=new Demande();
 /*this.postPayload=new PostPayload();
 this.id=this.route.snapshot.params['id'];
@@ -82,7 +130,7 @@ this.id=this.route.snapshot.params['id'];
   console.log(this.postPayloads);
   console.log(this.id);
  },error=>console.log(error));*/
- 
+ console.log(this.tt);
 
  
 
@@ -91,6 +139,10 @@ this.id=this.route.snapshot.params['id'];
     //this.email=this.route.snapshot.params['email'];
      this.demandeService.getDemaneById(this.id).subscribe(data=>{
       this.demande=data; 
+      //for send email
+      this.user=this.demande.email;
+      console.log(this.user); 
+      //for send email
       //console.log(this.demande)
       //this.email=this.demande.email;
       //console.log(this.demande.email);
@@ -101,11 +153,24 @@ this.id=this.route.snapshot.params['id'];
 
      this.reponse=new Reponse();
      this.id=this.route.snapshot.params['id'];
+     
      this.demandeService.getReponsesList(this.id).subscribe(data=>{
       this.reponses=data; 
-      console.log(this.reponses); 
+      
+      //console.log(this.reponses); 
+      
       
      },error=>console.log(error));
+     /*this.reponse=new Reponse();
+     this.id=this.route.snapshot.params['id'];
+     
+     this.demandeService.getReponsesList1(2).subscribe(data=>{
+     
+      this.reponse=data;
+      console.log(this.reponse); 
+      
+      
+     },error=>console.log(error));*/
 
 
     /* this.reponse=new Reponse();
@@ -124,10 +189,46 @@ this.id=this.route.snapshot.params['id'];
     
   }
   
-
-
-  saveEmail(){
+  
+  saveReponse(){
+    this.demandeService.sendReponse(this.reponse1,this.id).subscribe( data =>{
+       console.log(data);
+       console.log(this.id);
+      //this.goToEmployeeList();
+      
+    },
+    error => console.log(error));
+  }
+  saveEmail1(){
     this.demandeService.createEmail(this.email).subscribe( data =>{
+      console.log(data);
+      
+    },
+    error => console.log(error));
+  }
+  /*saveEmail(){
+    this.demandeService.createEmail(this.email).subscribe( data =>{
+      console.log(data);
+      
+    },
+    error => console.log(error));
+  }*/
+  saveEmail(){
+    //this.emailload.mensaje=this.addPostForm.get('body').value;
+    this.emailload.email=this.user;
+    this.emailload.mensaje=this.addPostForm.get('body').value;
+    this.demandeService.createEmail1(this.emailload).subscribe( data =>{
+      
+      
+    },
+    error => console.log(error));
+    console.log(this.emailload.email);
+    console.log(this.emailload.mensaje);
+    console.log(this.body);
+  }
+  saveEmail2(){
+    this.emailload.email=this.user;
+    this.demandeService.createEmail1(this.emailload).subscribe( data =>{
       console.log(data);
       
     },
@@ -135,10 +236,24 @@ this.id=this.route.snapshot.params['id'];
   }
   onSubmit(){
       this.saveEmail();
+      
+      
+
+  }
+  onSubmit1(){
+    console.log(this.reponse);
+    this.saveReponse();
+    this.saveEmail1();
+    this.saveEmail2();
+  }
+  private getMacros(){
+    this.demandeService.getMacrosList().subscribe(data=>{
+      this.macros=data;
+    });
   }
 
 
-
+  
 
   /*addPost(){
     this.postPayload.description = this.addPostForm.get('body').value;

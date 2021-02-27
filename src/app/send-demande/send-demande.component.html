@@ -1,12 +1,12 @@
 
 
+<!--
 
-
-<button class="btn btn-primary" (click)="myFunction()">Button</button>
+<button class="btn btn-primary" (click)="myFunction()">Button</button>-->
 
 <div class="container"  style="width:450px;" >
     
-<h3>envoyer votre demande </h3>
+<h3>Envoyer votre demande </h3>
 <form (ngSubmit)="onSubmit()">
 <div class="form-group">
     <label>nom</label>
@@ -23,11 +23,13 @@
     <input type="text" class="form-control" id ="email"
         [(ngModel)]="demande.email" [(ngModel)]="email.email" name="email" name="email">
 </div>
+
 <div class="form-group">
     <label>description</label>
-    <input type="text" class="form-control" id ="description"
-        [(ngModel)]="demande.description"  [(ngModel)]="email.mensaje"name="description">
-</div>
+    <textarea class="form-control" id ="description"
+    [(ngModel)]="demande.description"  [(ngModel)]="email.mensaje"name="description"rows="3"></textarea>
+  </div>
+
 <div class="form-group">
     <select  [(ngModel)]="demande.problem" class="btn btn-secondary dropdown-toggle"  name="problem">
       <option value="default">type de problème</option>
@@ -47,21 +49,21 @@
 
 
 
-<button  class="btn btn-success" type="submit">submit</button>
+<button  class="btn btn-success" type="submit" >Envoyer</button>
 </form>
 
 </div>
 <iframe id="chatbot" width="350" height="430"  allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/e558bc35-551f-4604-89a1-1705020f383d"></iframe>
   
 
-
-<!--<div class="col-md-4">
+<!--
+<div class="col-md-4">
 	<select [(ngModel)]="demande.problem"  style="width:400px;">
     <option *ngFor="let problem of problemes" [value]="problem.nom" >{{problem.id}}
     </option>
   </select>
   <input class="form-control" type="text" value="{{demande.problem}}"> 
-</div>!-->
+</div>-->
 
 
 

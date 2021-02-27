@@ -20,6 +20,9 @@ import { EditorModule } from '@tinymce/tinymce-angular';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { FaqComponent } from './faq/faq.component';
+import { DemandeService } from './demande.service';
+import { MacroComponent } from './macro/macro.component';
+import { FaqListComponent } from './faq-list/faq-list.component';
 registerLocaleData(localeFr, 'fr');
 //for french date
 @NgModule({
@@ -32,7 +35,9 @@ registerLocaleData(localeFr, 'fr');
     NavbarComponent,
     InboxComponent,
     EmailDetailComponent,
-    FaqComponent
+    FaqComponent,
+    MacroComponent,
+    FaqListComponent
   ],
   imports: [
     BrowserModule,
