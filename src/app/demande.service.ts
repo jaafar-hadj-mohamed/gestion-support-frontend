@@ -7,6 +7,7 @@ import { Email } from './email';
 import { Etat } from './etat';
 import { Faq } from './faq';
 import { Macro } from './macro';
+import { User } from './user';
 import { PostPayload } from './email-detail/post-payload';
 import { Problem } from './problem';
 import { Emailload } from './faq/emailload';
@@ -29,7 +30,7 @@ export class DemandeService {
   private baseURL10 ="http://localhost:3000/api/v1/etats";
   private baseURL11 ="http://localhost:3000/api/v1/faqs";
   private baseURL12 ="http://localhost:3000/api/v1/macros";
-
+  private baseURL13 ="http://localhost:3000/api/v1/users";
   constructor(private httpClient:HttpClient) { }
 
   
@@ -78,6 +79,12 @@ export class DemandeService {
   deleteMacro(id:number):Observable<Object>{
     return this.httpClient.delete(`${this.baseURL12}/${id}`);
   }
+
+  getUsersList():Observable<User[]>{
+    return this.httpClient.get<User[]>(`${this.baseURL13}`);
+  }
+
+
   /*addPost(postPayload: PostPayload){
     return this.httpClient.post(`${this.baseURL}`, postPayload);
 

@@ -13,17 +13,17 @@
           <a routerLink="/interface-agent/inbox"  routerLinkActive="active"><span class="far fa-inbox-in mr-3"></span> Demandes</a>
         </li>
         <li>
-          <a routerLink="/interface-agent/faq-list" ><span class="fa fa-question-circle  mr-3" ></span> Faq</a>
+          <a *ngIf="showAdminBoard" routerLink="/interface-agent/faq-list" ><span class="fa fa-question-circle  mr-3" ></span> Faq</a>
         </li>
         <li>
-          <a routerLink="/interface-agent/macro" ><span class="fa fa-file-text  mr-3" ></span> Macros</a>
+          <a *ngIf="showAdminBoard" routerLink="/interface-agent/macro" ><span class="fa fa-file-text  mr-3" ></span> Macros</a>
         </li>
      <!-- <li>
           <a href="#"><span class="fa fa-file-text mr-3"></span> Blog</a>
-        </li>
-        <li>
-          <a href="#"><span class="fa fa-suitcase mr-3"></span> Gallery</a>
         </li>-->  
+        <li>
+          <a *ngIf="showAdminBoard" routerLink="/interface-agent/profile"><span class="fa fa-users mr-3"></span> Agents</a>
+        </li>
         <li>
           <a href="#"><span class="fa fa-pie-chart mr-3" ></span> Dashboad</a>
         </li>

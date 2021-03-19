@@ -1,6 +1,6 @@
 
 
-<div class="wrapper d-flex align-items-stretch">
+<div class="wrapper d-flex align-items-stretch" *ngIf="isLoggedIn">
   <app-sidebar></app-sidebar>
 <!-- Page Content  -->
 
@@ -16,4 +16,4 @@
 
 </div>
   
-
+<p *ngIf="!isLoggedIn">404</p>

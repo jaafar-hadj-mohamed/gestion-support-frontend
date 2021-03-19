@@ -8,6 +8,7 @@ import { Problem } from '../problem';
 import { Macro } from '../macro';
 import { data } from 'jquery';
 import { error } from 'protractor';
+import { TokenStorageService } from '../_services/token-storage.service';
 
 @Component({
   selector: 'app-macro',
@@ -22,12 +23,31 @@ export class MacroComponent implements OnInit {
  reponse:string="";
 macros:Macro[];
 mac:[];
-  constructor(private demandeService:DemandeService) {
+//auth
+private roles: string[];
+  isLoggedIn = false;
+  showAdminBoard = false;
+  showModeratorBoard = false;
+  username: string;
+ //auth 
+  constructor(private tokenStorageService: TokenStorageService,private demandeService:DemandeService) {
     
    }
 
   ngOnInit(): void {
+//auth
+this.isLoggedIn = !!this.tokenStorageService.getToken();
 
+if (this.isLoggedIn) {
+  const user = this.tokenStorageService.getUser();
+  this.roles = user.roles;
+
+  this.showAdminBoard = this.roles.includes('ROLE_ADMIN');
+  this.showModeratorBoard = this.roles.includes('ROLE_MODERATOR');
+
+  this.username = user.username;
+}
+//auth
     
     this.getMacros();
     
@@ -41,6 +61,7 @@ mac:[];
   saveMacro(){
     this.demandeService.postMacro(this.macro).subscribe( data =>{
        console.log(data);
+       //this.reloadPage();
       //this.goToEmployeeList();
       
     },
@@ -86,6 +107,10 @@ mac:[];
       console.log(data);
       this.getMacros();
     })
+  }
+
+  reloadPage(): void {
+    window.location.reload();
   }
 
 }
