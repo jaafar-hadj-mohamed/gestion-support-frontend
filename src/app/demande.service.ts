@@ -63,9 +63,25 @@ export class DemandeService {
   getFaqsList():Observable<Faq[]>{
     return this.httpClient.get<Faq[]>(`${this.baseURL11}`);
   }
+  postFaq(faq: Faq):Observable<object>{
+    return this.httpClient.post(`${this.baseURL11}`, faq);
+
+  }
+  getFaqById(id:number):Observable<Faq>{
+    return this.httpClient.get<Faq>(`${this.baseURL11}/${id}`);
+  }
+  updateFaq(id:number,faq:Faq):Observable<Object>{
+    return this.httpClient.put(`${this.baseURL11}/${id}`,faq);
+  }
+  deleteFaq(id:number):Observable<Object>{
+    return this.httpClient.delete(`${this.baseURL11}/${id}`);
+  }
+
+
   getMacrosList():Observable<Macro[]>{
     return this.httpClient.get<Macro[]>(`${this.baseURL12}`);
   }
+  
   postMacro(macro: Macro):Observable<object>{
     return this.httpClient.post(`${this.baseURL12}`, macro);
 

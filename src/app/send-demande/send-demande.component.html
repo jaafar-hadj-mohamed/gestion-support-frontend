@@ -4,8 +4,13 @@
 
 <button class="btn btn-primary" (click)="myFunction()">Button</button>-->
 
-<div class="container"  style="width:450px;" >
+<div class="container"   >
+  <div class="row">
     
+    <div class="col-5">
+  
+    
+  
 <h3>Envoyer votre demande </h3>
 <form (ngSubmit)="onSubmit()">
 <div class="form-group">
@@ -25,19 +30,21 @@
 </div>
 
 <div class="form-group">
+  <select  [(ngModel)]="demande.problem" class="btn btn-secondary dropdown-toggle"  name="problem">
+    <option value="default">Sujet</option>
+   <option  *ngFor="let problem of problemes" [Value]="problem" >{{problem.nom}}</option>
+</select>
+
+{{demande.nom}}
+</div>
+
+<div class="form-group">
     <label>description</label>
     <textarea class="form-control" id ="description"
     [(ngModel)]="demande.description"  [(ngModel)]="email.mensaje"name="description"rows="3"></textarea>
   </div>
 
-<div class="form-group">
-    <select  [(ngModel)]="demande.problem" class="btn btn-secondary dropdown-toggle"  name="problem">
-      <option value="default">type de problème</option>
-     <option  *ngFor="let problem of problemes" [Value]="problem" >{{problem.nom}}</option>
-  </select>
-  
-  {{demande.nom}}
-</div>
+
 
 
 
@@ -53,8 +60,17 @@
 </form>
 
 </div>
+
+<div class="col-2"><img src="../../assets/images/42.png" style="
+  width: 620px;"></div>
+</div></div>
+
+<!--
 <iframe id="chatbot" width="350" height="430"  allow="microphone;" src="https://console.dialogflow.com/api-client/demo/embedded/e558bc35-551f-4604-89a1-1705020f383d"></iframe>
-  
+-->
+
+
+
 
 <!--
 <div class="col-md-4">
@@ -68,6 +84,9 @@
 
 
 
+
+
+  
 
 
 

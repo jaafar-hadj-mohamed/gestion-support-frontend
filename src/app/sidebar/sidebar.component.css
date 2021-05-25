@@ -98,6 +98,8 @@ body {
           color: #44bef1; }
         #sidebar ul li a:hover {
           color: #fff; }
+          #sidebar ul li a:focus {
+            color: rgb(255, 255, 255); }
       #sidebar ul li.active > a {
         background: transparent;
         color: #fff; }
@@ -109,7 +111,7 @@ body {
     #sidebar .custom-menu {
       display: inline-block;
       position: absolute;
-      top: 56px;
+      /*top: 56px;*/
       right: 0;
       margin-right: -20px;
       -webkit-transition: 0.3s;
@@ -147,7 +149,7 @@ body {
           #sidebar .custom-menu .btn.btn-primary:hover, #sidebar .custom-menu .btn.btn-primary:focus {
             background: transparent !important;
             border-color: transparent !important; }
-  
+            
   a[data-toggle="collapse"] {
     position: relative; }
   

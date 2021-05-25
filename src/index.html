@@ -10,6 +10,8 @@
   
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
   
+
+    <meta name="viewport" content="width-device-width, initial-scale=1">
 </head>
 <body>
   <app-root></app-root>
@@ -18,5 +20,14 @@
     var displaytext=d.options[d.selectedIndex].text;
     document.getElementById("txtvalue").value=displaytext;
     }</script>-->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+<df-messenger
+  intent="WELCOME"
+  chat-title="Proged"
+  
+  agent-id="cb67c34b-5838-4f23-9d51-593a266df337"
+  language-code="fr"
+></df-messenger>
+
 </body>
 </html>

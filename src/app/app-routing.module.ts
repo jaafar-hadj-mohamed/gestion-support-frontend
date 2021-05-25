@@ -8,7 +8,7 @@ import { InboxComponent } from './inbox/inbox.component';
 import { InterfaceAgentComponent } from './interface-agent/interface-agent.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SendDemandeComponent } from './send-demande/send-demande.component';
-
+import {DashboardComponent} from './dashboard/dashboard.component';
 
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -51,6 +51,8 @@ const routes: Routes = [
       {path:'faq-list',component:FaqListComponent},
       { path: 'register', component: RegisterComponent },
       { path: 'profile', component: ProfileComponent },
+      { path: 'dashboard', component: DashboardComponent },
+      
       
       
     ]},

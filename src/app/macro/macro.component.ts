@@ -9,7 +9,7 @@ import { Macro } from '../macro';
 import { data } from 'jquery';
 import { error } from 'protractor';
 import { TokenStorageService } from '../_services/token-storage.service';
-
+import Swal from 'sweetalert2';
 @Component({
   selector: 'app-macro',
   templateUrl: './macro.component.html',
@@ -63,6 +63,29 @@ if (this.isLoggedIn) {
        console.log(data);
        //this.reloadPage();
       //this.goToEmployeeList();
+
+            //message de succés ajout
+                  const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    //background: '#a5dc86',
+                    //iconColor:'red',
+                    didOpen: (toast) => {
+                      toast.addEventListener('mouseenter', Swal.stopTimer)
+                      toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                  })
+                  
+                  Toast.fire({
+                    icon: 'success',
+                    title: 'Macro ajouté avec succés'
+                  })
+            //message de succés ajout
+
+
       
     },
     error => console.log(error));
@@ -102,15 +125,46 @@ if (this.isLoggedIn) {
   
 
   deleteMacro(id:number){
-    console.log(id);
+
+        Swal.fire({
+          title: 'Voulez vous vraiment suprimmer cet élément?',
+          icon: 'warning',
+          showDenyButton: false,
+          showCancelButton: true,
+          confirmButtonText: `suprimmer`,
+          cancelButtonText:'Annuler',
+          //denyButtonText: `ne pas suprimmer`,
+        }).then((result) => {
+          /* Read more about isConfirmed, isDenied below */
+          if (result.isConfirmed) {
+            console.log(id);
     this.demandeService.deleteMacro(id).subscribe(data=>{
       console.log(data);
       this.getMacros();
     })
+
+
+
+
+            Swal.fire('Supprimé!', 'Le macro a été supprimée avec succès.', 'success')
+          } /* else if (result.isDenied) {
+            Swal.fire('Changes are not saved', '', 'info')
+          } */
+        })
+
+
+
+    
   }
 
   reloadPage(): void {
     window.location.reload();
   }
 
+
+
+
+
+
+  
 }

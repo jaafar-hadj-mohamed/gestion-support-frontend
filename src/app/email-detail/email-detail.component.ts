@@ -18,6 +18,7 @@ import{PostPayload} from './post-payload';
 import { Problem } from '../problem';
 import { toTypeScript } from '@angular/compiler';
 
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -237,7 +238,27 @@ this.id=this.route.snapshot.params['id'];
   onSubmit(){
       this.saveEmail();
       
+      //message de succés ajout
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        //background: '#a5dc86',
+        //iconColor:'red',
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
       
+      Toast.fire({
+        icon: 'success',
+        title: 'Macro ajouté avec succés'
+      })
+//message de succés ajout
+
 
   }
   onSubmit1(){

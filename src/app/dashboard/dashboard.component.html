@@ -1,0 +1,118 @@
+
+<div class="container-fluid">
+    <div class="header-body">
+<div class="row">
+    <div class="col-xl-3 col-md-6">
+      <div class="card card-stats">
+        <!-- Card body -->
+        <div class="card-body">
+            <div class="row">
+              <div class="col">
+                <h5 class="card-title text-uppercase text-muted mb-0">Demandes</h5>
+                <span class="h2 font-weight-bold mb-0">{{users.length}}</span>
+              </div>
+              <div class="col-auto">
+                <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow" style="
+                background: linear-gradient(87deg,#f5365c 0,#f56036 100%)!important">
+                  <i class="fa fa-inbox"></i>
+                </div>
+              </div>
+            </div>
+            <p class="mt-3 mb-0 text-sm">
+              <!--<span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>-->
+              <span class="text-nowrap">Nombre des Demandes</span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-xl-3 col-md-6">
+        <div class="card card-stats" >
+    
+        <!-- Card body -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Macros</h5>
+              <span class="h2 font-weight-bold mb-0">{{m}}</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-gradient-orange text-white rounded-circle shadow" style="
+              background: linear-gradient(
+              87deg
+              ,#fb6340 0,#fbb140 100%)!important;
+              ">
+                <i class="fa fa-inbox"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-sm">
+           <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"aria-hidden="true"></i> 3.48%</span>-->
+            <span class="text-nowrap">Nombre des Macros</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+      <div class="card card-stats" >
+        <!-- Card body -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Faq</h5>
+              <span class="h2 font-weight-bold mb-0">{{f}}</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-gradient-green text-white rounded-circle shadow" style="
+              background: linear-gradient(
+              87deg
+              ,#2dce89 0,#2dcecc 100%)!important;
+              ">
+                <i class="fa fa-inbox"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-sm">
+           <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>-->
+            <span class="text-nowrap">Nombre des Faq</span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-3 col-md-6">
+      <div class="card card-stats" >
+        <!-- Card body -->
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h5 class="card-title text-uppercase text-muted mb-0">Agents</h5>
+              <span class="h2 font-weight-bold mb-0">{{u}}</span>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-gradient-info text-white rounded-circle shadow" style="
+              background: linear-gradient(
+              87deg
+              ,#11cdef 0,#1171ef 100%)!important;
+              ">
+                <i class="fa fa-inbox"></i>
+              </div>
+            </div>
+          </div>
+          <p class="mt-3 mb-0 text-sm">
+           <!-- <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>-->
+            <span class="text-nowrap">Nombre des Agents</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+<div echarts [options]="options" class="demo-chart"></div>

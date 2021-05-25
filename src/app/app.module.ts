@@ -15,6 +15,7 @@ import { EmailDetailComponent } from './email-detail/email-detail.component';
 
 import { EditorModule } from '@tinymce/tinymce-angular';
 
+import { NgxEchartsModule } from 'ngx-echarts';
 
 //for french date
 import { registerLocaleData } from '@angular/common';
@@ -32,6 +33,7 @@ import { BoardModeratorComponent } from './board-moderator/board-moderator.compo
 import { BoardUserComponent } from './board-user/board-user.component';
 
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 registerLocaleData(localeFr, 'fr');
 //for french date
@@ -54,7 +56,8 @@ registerLocaleData(localeFr, 'fr');
     ProfileComponent,
     BoardAdminComponent,
     BoardModeratorComponent,
-    BoardUserComponent
+    BoardUserComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,15 @@ registerLocaleData(localeFr, 'fr');
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    EditorModule
+    EditorModule,
+    NgxEchartsModule.forRoot({
+      /**
+       * This will import all modules from echarts.
+       * If you only need custom modules,
+       * please refer to [Custom Build] section.
+       */
+      echarts: () => import('echarts'), // or import('./path-to-my-custom-echarts')
+    })
   ],
   providers: [authInterceptorProviders,/*for french date*/{provide: LOCALE_ID, useValue: 'fr' }/*for french date*/],
   bootstrap: [AppComponent]
